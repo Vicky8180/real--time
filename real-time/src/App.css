@@ -1,0 +1,141 @@
+.div1 {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Adjust the height as needed */
+    justify-content: space-between;
+  }
+  
+  .App {
+    flex: 1; /* This makes .App take up all available vertical space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .div3 {
+    /* You can add styling specific to div3 if needed */
+    margin-top: 20px; /* Add space above div3 */
+  }
+  
+
+  /* Style for the main container */
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* Style for the Kanban board */
+  .board {
+    display: flex;
+    justify-content:space-around;
+    align-items: flex-start;
+  }
+  
+  .column {
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 30%;
+    margin: 0 10px;
+  }
+  
+  .column h2 {
+    margin: 0;
+    padding: 10px 0;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .task-list {
+    padding: 10px 0;
+  }
+  
+  .task {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .task h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .task p {
+    margin: 5px 0;
+  }
+  
+  .task button {
+    cursor: pointer;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .task button:hover {
+    background: #2980b9;
+  }
+  
+  /* Style for the task form */
+  .task-form {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    max-width: 400px;
+  }
+  
+  .task-form h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    cursor: pointer;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background: #2980b9;
+  }
+  
