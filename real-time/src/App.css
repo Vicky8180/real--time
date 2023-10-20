@@ -1,12 +1,12 @@
-.div1 {
+/* .div1 {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Adjust the height as needed */
+    height: 100vh; 
     justify-content: space-between;
   }
   
   .App {
-    flex: 1; /* This makes .App take up all available vertical space */
+    flex: 1; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,12 +14,10 @@
   }
   
   .div3 {
-    /* You can add styling specific to div3 if needed */
-    margin-top: 20px; /* Add space above div3 */
-  }
+ 
+    margin-top: 20px;   }
   
 
-  /* Style for the main container */
 div {
     display: flex;
     flex-direction: column;
@@ -28,7 +26,7 @@ div {
     padding: 20px;
   }
   
-  /* Style for the Kanban board */
+
   .board {
     display: flex;
     justify-content:space-around;
@@ -91,7 +89,7 @@ div {
     background: #2980b9;
   }
   
-  /* Style for the task form */
+
   .task-form {
     background: #fff;
     border: 1px solid #ccc;
@@ -138,4 +136,146 @@ div {
   button:hover {
     background: #2980b9;
   }
-  
+   */
+
+
+
+
+/* for leftnabvar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.search-box {
+  padding: 5px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .profile-pic {
+    margin-bottom: 10px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+}
+/* till here */
+
+
+
+
+
+
+/* for contact */
+
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.left-section {
+  flex: 0 0 auto; /* Don't grow or shrink */
+  margin-right: 10px;
+}
+
+.profile-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.right-section {
+  flex: 1; /* Grow to take remaining space */
+}
+
+.name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.description {
+  font-size: 14px;
+}
+
+.delete-button {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Responsive styles for smaller screens (e.g., mobile) */
+@media (max-width: 768px) {
+  .contact-item {
+    flex-direction: column;
+    text-align: center;
+    border-bottom: none;
+    padding: 20px 10px;
+  }
+
+  .left-section {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+
+/* till here */
+
+
+
+
+
+
+  /* mainPage-i */
+
+
+.FP-1{
+  display: flex;
+  justify-content: space-between;
+  width: 92%;
+  margin-left: 4%;
+  margin-top: 1%;
+}
+
+.LP-1{
+  order: 1;
+  background-color: aqua;
+  height: auto;
+  width: 30%;
+}
+
+.RP-1{
+  order: 2;
+  background: #2f2e2e;
+  width: 70%;
+  height: 800px;
+}
+
+

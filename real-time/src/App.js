@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ChatRoom from './component/ChatRooms';
 import KanbanBoard from './KanbanBoard';
 import './App.css'
+import FirstPage from './component/FirstPage';
 function App() {
 
   const [username, setUsername] = useState('');
@@ -12,7 +13,7 @@ function App() {
   return (
   <>
   <div className='div1'>
-  <div className="App">
+  {/* <div className="App">
       <h1>Real-Time Chat App</h1>
       <div>
         <input
@@ -28,7 +29,10 @@ function App() {
 
     <div className='div3'>
       <KanbanBoard/>
-    </div>
+    </div> */}
+
+
+    <FirstPage/>
   </div>
 
   

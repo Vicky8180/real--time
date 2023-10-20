@@ -1,6 +1,5 @@
 const express = require("express")
 const socketIo = require('socket.io');
-const mongoose = require('mongoose');
 const app=express();
 const port = 5000
 const dp=require("./dp");
@@ -13,17 +12,19 @@ app.use((req,res,next)=>{
     next();
   })
 
-//   io.on('connection', (socket) => {
-//     console.log('A user connected');
-//     socket.on('disconnect', () => {
-//       console.log('A user disconnected');
-//     });
-//   });
+
 
 const chatgetRoute=require("./router/getroute");
 const chatpostRoute=require("./router/postroute");
 app.use('/api', chatgetRoute);
 app.use('/api', chatpostRoute);
+
+
+
+
+app.get('/api/:anoop',(req,res)=>{
+  console.log(req.params);
+})
   
 
 app.listen(port, () => {
