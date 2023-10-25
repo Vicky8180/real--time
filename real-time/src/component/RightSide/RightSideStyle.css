@@ -1,0 +1,196 @@
+/* RightNavbar.css */
+.RN-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    height: 65px;
+  }
+  
+  .RN-2 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .RN-2 img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .RN-3 {
+    font-weight: bold;
+  }
+  
+  .RN-4 button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .RN-1 {
+      flex-direction: column;
+      /* padding: 10px; */
+    }
+  
+    /* .RN-2,
+    .RN-3,
+    .RN-4 {
+      margin: 10px 0;
+    } */
+  }
+  /* till here */
+
+
+
+  /* RightFooter.css */
+.RF-1 {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  height: 60px;
+}
+
+.emogi {
+  margin-right: 10px; /* Add some margin to separate emoji from input */
+  margin-left: 14px;
+}
+
+.input {
+  flex-grow: 1; /* Allow the input to expand and take available space */
+}
+
+.inputform {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  flex-grow: 1; /* Make the input field fill the available space */
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  height: 40px;
+}
+
+.send {
+  margin-left: 10px; /* Add margin to separate input from Send button */
+   margin-right: 12px;
+}
+
+
+.sendButton {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .RF-1 {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .input {
+    margin: 10px 0;
+  }
+
+  .send {
+    margin-left: 0;
+  }
+}
+
+
+/* till here */
+
+
+/* RightBody.css */
+.RB-1 {
+  width: 94%; /* Set a fixed width for the div */
+  height: 600px; /* Set a fixed height for the div */
+  overflow: auto; /* Enable vertical and horizontal scrolling when content overflows */
+  border: 1px solid #ccc; /* Add a border for visual separation */
+  padding: 10px;
+  margin-left: 2%; /* Add padding to the content area */
+  color: white;
+ 
+  
+  
+
+  word-wrap: break-word;
+
+  
+  
+}
+
+/* Remove hover scaling effect */
+.RB-1::-webkit-scrollbar {
+  width: 1px;
+}
+
+.RB-1::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.RB-1::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
+
+.RB-1::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* chat css */
+
+
+.CH-1{
+
+  max-width: 100%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  word-wrap: break-word;
+  clear: both; 
+
+}
+.message-sender {
+  float: left;
+  max-width: 45%;
+  background-color: #1fc496;
+  color: #000000;
+  border-radius: 3%;
+ 
+}
+
+.message-receiver {
+  float: right;
+  max-width: 45%;
+  background-color: #ccc;
+  color: #000;
+  border-radius: 3%;
+  
+}
+.CH-TXT{
+   margin-left: 8px;
+  margin-right: 5px; 
+  font-size: 14px;
+  text-align: center;
+ 
+}
+
+
+/* till here */

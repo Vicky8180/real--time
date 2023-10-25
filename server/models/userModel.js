@@ -21,8 +21,13 @@ const userSchema = new mongoose.Schema({
 
     required: true,
     default:
-      "https://cirrusindia.co.in/wp-content/uploads/2016/10/dummy-profile-pic-male1.jpg",
+      "https://static.vecteezy.com/system/resources/thumbnails/019/900/322/small/happy-young-cute-illustration-face-profile-png.png",
   },
+  friends:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"users",
+    default:null
+  }]
 });
 
 const UserModel = mongoose.model("users", userSchema);

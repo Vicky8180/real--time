@@ -4,35 +4,36 @@ const userModel = require("../models/userModel")
 const setCookies = require("../Authentication/setCookies");
 
 
-router.post('/',async(req,res)=>{
+router.post('/register',async(req,res)=>{
 
     try {
-        
+      
      const email= req.body.email;
-
-     const userExists= userModel.find({email:email});
-
+   console.log(email);
+     const userExists=  await userModel.findOne({email:email});
+     console.log(userExists);
      if(userExists){
 
         console.log("email matched");
 
-        return res.json({data:"User Exists"});
+        return res.json({data:"User Exists", success:false});
      }else {
 
         const password=req.body.password;
         const name=req.body.name;
-
+        console.log(req.body.name )
     const newUser= {name,email,password};
-
+  console.log(newUser )
         const data= await userModel.create(newUser);
-        setCookies(data,res,"Register and Token is added");
-
+           console.log("love")
+      const love=  setCookies(data,res,"Register and Token is added");
+//   console.log(love)
      }
 
 
     } catch (error) {
-        
-        return res.json("Error in user registraction ");
+     
+        return res.json({success:false,message:"User Exists or invalid!"});
 
     }
 

@@ -249,6 +249,80 @@ div {
 /* till here */
 
 
+/* UserDialog.css */
+.user-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-dialog-content {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  width: 90%;
+  max-width: 450px;
+  max-height: 600px;
+  text-align: center;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.user-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
+.user-name {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.user-email {
+  color: #888;
+  margin-top: 5px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 500px) {
+  .user-dialog-content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .user-photo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .user-name {
+    font-size: 1.2rem;
+  }
+}
+
+/* till here  */
+
+
+
 
 
 
@@ -266,7 +340,7 @@ div {
 
 .LP-1{
   order: 1;
-  background-color: aqua;
+  background-color: rgb(103, 155, 155);
   height: auto;
   width: 30%;
 }
@@ -279,3 +353,61 @@ div {
 }
 
 
+
+/* till here  */
+
+
+/* searrch User */
+
+.SU-1{
+  width: 95%;
+  margin-top: 0px;
+  max-height: 450px;
+  overflow-x: hidden; 
+  overflow-y: auto; 
+}
+.SU-4{
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+
+}
+.SU-3{
+  max-height: 450px;
+}
+.SU-btn{
+  width: 80px;
+  height: 40px;
+}
+
+.SU-5{
+  text-align: center;
+}
+
+.SU-img{
+
+  width: 40px;
+  height: 40px;
+}
+
+/* TIll here */
+
+
+
+
+.SU-1::-webkit-scrollbar {
+  width: 10px;
+}
+
+.SU-1::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 0px;
+}
+
+.SU-1::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+}
+
+.SU-1::-webkit-scrollbar-track {
+  background-color: transparent;
+}

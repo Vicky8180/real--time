@@ -1,38 +1,28 @@
 import React, { useState } from 'react';
 import ChatRoom from './component/ChatRooms';
-import KanbanBoard from './KanbanBoard';
+import { BrowserRouter,Routes,Route} from "react-router-dom"
 import './App.css'
 import FirstPage from './component/FirstPage';
+import Register from "../src/component/User/Register"
+import Login from "../src/component/User/Login"
+import UserDetailView from './component/Models/UserDetailView';
 function App() {
 
-  const [username, setUsername] = useState('');
-  
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
   return (
   <>
   <div className='div1'>
-  {/* <div className="App">
-      <h1>Real-Time Chat App</h1>
-      <div>
-        <input
-          type="text"
-          placeholder="Enter your username"
-          value={username}
-          onChange={handleUsernameChange}
-        />
-        <button>Join Chat</button>
-      </div>
-      {username && <ChatRoom username={username} />}
-    </div>
-
-    <div className='div3'>
-      <KanbanBoard/>
-    </div> */}
+    {/* <FirstPage/> */}
 
 
-    <FirstPage/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/"    Component={Register} />
+        <Route path="/login"    Component={Login} />
+        <Route path="/firstpage"    Component={FirstPage} />
+      </Routes>
+    </BrowserRouter>
+
+
   </div>
 
   

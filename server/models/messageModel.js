@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const messageSchema = new mongoose.Schema({
   chat: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Chat',
+    ref: 'chat',
     required: true,
   },
   sender: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'users',
     required: true,
   },
   textContent: {
@@ -21,6 +21,6 @@ const messageSchema = new mongoose.Schema({
   },
 });
 
-const MessageModel = mongoose.model('Message', messageSchema);
+const MessageModel = mongoose.model('message', messageSchema);
 
 module.exports = Message;

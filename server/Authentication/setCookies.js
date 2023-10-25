@@ -4,11 +4,9 @@ const jwt= require("jsonwebtoken");
 dotenv.config();
 
 
-const settingCookies=(data,req,message)=>{
-
-  const generateToken= jwt.sign({id:data._id.toString()},procces.env.SECRET_KEY);
-
-  return res.status(200).cookies("Token",generateToken,{
+const settingCookies=(data,res,message)=>{
+  const generateToken= jwt.sign({id:data._id.toString()},process.env.SECRET_KEY);
+  return res.cookie("token",generateToken,{
     httpOnly:true,
     maxAge:1000*60*15
   }).json({

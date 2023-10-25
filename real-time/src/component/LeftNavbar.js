@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css'; // Import your CSS file
 import ContactItem from './ContactItem';
-
+import Modal from "../component/Models/Modal"
+import LiveSearch from "./Models/LiveSearch"
 const LeftNavbar = () => {
    
     const tt="https://static.vecteezy.com/system/resources/thumbnails/019/900/322/small/happy-young-cute-illustration-face-profile-png.png"
@@ -18,21 +19,7 @@ const LeftNavbar = () => {
           numbers: ['555-555-5555'],
           discription:"Hi, John wwhere r u?  "
         },
-        {
-            name: 'Mitchal Smith',
-            numbers: ['555-555-5555'],
-            discription:"Hi, John wwhere r u?"
-          },
-          {
-            name: 'Jane Sorty',
-            numbers: ['555-555-5555'],
-            discription:"Hi, John wwhere r u?"
-          },
-          {
-            name: 'Jane Smith',
-            numbers: ['555-555-5555'],
-            discription:"Hi, vicky wwhere r u?"
-          },
+      
           {
             name: 'John Doe',
             numbers: ['123-456-7890'],
@@ -50,6 +37,15 @@ const LeftNavbar = () => {
           },
       ];
  
+      const [showModal, setShowModal] = useState(false);
+
+ 
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
  
     return (<>
  <div className="navbar">
@@ -57,10 +53,19 @@ const LeftNavbar = () => {
         <img 
           src={tt}
           className="profile-pic"
+          alt="dd"
         />
       </div>
       <div className="search">
-        <input type="text" placeholder="Search" className="search-box" />
+     
+         <button onClick={openModal}>search
+         {showModal && (
+        <Modal>
+          <LiveSearch close={closeModal}/>
+        
+        </Modal>
+      )}
+         </button>
       </div>
     </div>
     {contacts.map((contact, index) => (<ContactItem

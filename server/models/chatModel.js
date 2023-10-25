@@ -9,16 +9,13 @@ chatName:{
 },
 users:[{
     type:mongoose.Schema.Types.ObjectId,
-    ref:"user",
+    ref:"users",
 }],
-latestMessage:{
+messageAccesser:{
     type:mongoose.Schema.Types.ObjectId,
-    ref:"Message",
+    ref:"message",
 },
-groupAdmin:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"user",
-},
+
 timeStamps:Date
 
 

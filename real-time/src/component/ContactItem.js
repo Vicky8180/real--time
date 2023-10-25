@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ContactItem = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="contact-item">
       <div className="left-section">
