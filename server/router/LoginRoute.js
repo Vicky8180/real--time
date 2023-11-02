@@ -14,7 +14,8 @@ router.post('/login',async(req,res)=>{
 
         
         const userExists= await  userModel.findOne({$and: [{ password }, { email }] })
-        console.log(userExists)
+        .populate("friends")
+        // console.log(userExists)
         setCookies(userExists,res,"user Logged-In");
         
     } catch (error) {

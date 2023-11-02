@@ -5,6 +5,7 @@ const chatSchema= new mongoose.Schema({
 
 chatName:{
     type:String,
+    unique:true,
     required:true
 },
 users:[{

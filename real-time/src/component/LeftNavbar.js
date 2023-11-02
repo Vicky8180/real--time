@@ -1,81 +1,122 @@
-import React, { useState } from 'react';
-import '../App.css'; // Import your CSS file
-import ContactItem from './ContactItem';
-import Modal from "../component/Models/Modal"
-import LiveSearch from "./Models/LiveSearch"
-const LeftNavbar = () => {
-   
-    const tt="https://static.vecteezy.com/system/resources/thumbnails/019/900/322/small/happy-young-cute-illustration-face-profile-png.png"
-   
-    
-    const contacts = [
-        {
-          name: 'John Doe',
-          numbers: ['123-456-7890'],
-          discription:"Hi, John wwhere r u?"
-        },
-        {
-          name: 'Jane Smith',
-          numbers: ['555-555-5555'],
-          discription:"Hi, John wwhere r u?  "
-        },
-      
-          {
-            name: 'John Doe',
-            numbers: ['123-456-7890'],
-            discription:"Hi, John wwhere r u?"
-          },
-          {
-            name: 'John Doe',
-            numbers: ['123-456-7890'],
-            discription:"Hi, John wwhere r u?"
-          },
-          {
-            name: 'John Doe',
-            numbers: ['123-456-7890'],
-            discription:"Hi,  wwhere r u?"
-          },
-      ];
- 
-      const [showModal, setShowModal] = useState(false);
+import React, { useEffect, useState } from "react";
+import "../App.css";
+import ContactItem from "./ContactItem";
+import Modal from "../component/Models/Modal";
+import LiveSearch from "./Models/LiveSearch";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { AddtoChatArray, ChatList, SelectedChat } from "../action";
+import NotificationTab from "./Models/NotificationTab";
+import MailIcon from '@mui/icons-material/Mail';
+import { Badge, IconButton } from "@mui/material";
 
- 
+const LeftNavbar = () => {
+  const tt ="https://static.vecteezy.com/system/resources/thumbnails/019/900/322/small/happy-young-cute-illustration-face-profile-png.png";
+
+  const admin = JSON.parse(localStorage.getItem("admin"));
+  const friends1 = admin.friends;
+  let friends;
+  const friends2=useSelector((state)=>state.Friends)
+  console.log(friends2)
+
+  if(friends2.length===0){
+   friends=friends1;
+  }else {
+    friends=friends2;
+  }
+  const dispatch = useDispatch();
+  const [showModal2, setShowModal2] = useState(false);
+  const [showModal3, setShowModal3] = useState(false);
+
+  const openModal3 = () => {
+    setShowModal3(true);
+  };
+  const closeModal3 = () => {
+    setShowModal3(false);
+  };
   const openModal = () => {
-    setShowModal(true);
+    setShowModal2(true);
   };
   const closeModal = () => {
-    setShowModal(false);
+    setShowModal2(false);
   };
- 
-    return (<>
- <div className="navbar">
-      <div className="profile">
-        <img 
-          src={tt}
-          className="profile-pic"
-          alt="dd"
-        />
-      </div>
-      <div className="search">
-     
-         <button onClick={openModal}>search
-         {showModal && (
-        <Modal>
-          <LiveSearch close={closeModal}/>
+
+  const openParticularChat = async (props) => {
+    const response = await axios.post("http://localhost:3003/api/chatcreated", {
+      chatName: admin.name,
+      users: [props._id, admin._id],
+      messageAccesser: admin._id,
+    });
+    console.log(props);
+    const chats = await axios.get(
+      `http://localhost:3003/api/getmessages?chatId=${response.data.data[0]._id}`
+    );
+    console.log(chats.data.data);
+    dispatch(ChatList(response.data));
+    dispatch(AddtoChatArray(chats.data.data));
+    dispatch(SelectedChat({ user: props, checkerBool: true }));
+
+  };
+
+
+  useEffect(() => {}, [showModal2, friends]);
+  const [notiCount,setNotiCount]=useState()
+   const notificationCount=useSelector((state)=>state.NotificationState)
+   console.log(notificationCount)
+  return (
+    <>
+      <div className="navbar">
+        <div className="profile">
+          <img src={tt} className="profile-pic" alt="dd" />
+         
+        </div>
+        <div className="adminName">{admin.name}</div>
+        <div className="notification">
         
-        </Modal>
-      )}
-         </button>
+        <IconButton  onClick={openModal3}  size="large" aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={notificationCount.length} color="error">
+                <MailIcon />
+              </Badge>
+            </IconButton>
+            {showModal3 && (
+            <Modal>
+              <NotificationTab close={closeModal3} />
+            </Modal>
+          )}
+      
+        </div>
+     
+        <div className="search">
+          <button onClick={openModal}>search </button>
+          {showModal2 && (
+            <Modal>
+              <LiveSearch close={closeModal} />
+            </Modal>
+          )}
+        </div>
       </div>
-    </div>
-    {contacts.map((contact, index) => (<ContactItem
-          key={index}
-          contactName={contact.name}
-          discription={contact.discription}
-        />
+      <div className="friendslist">
+      {friends.map((value, index) => (
+        <button
+          onClick={() => {
+            openParticularChat(value);
+          }}
+          className="btnOfcontact"
+        >
+          <ContactItem
+            key={index}
+            contactName={value.name}
+            discription={value.password}
+          />
+        </button>
       ))}
+      </div>
+
+      <div className="logout"> 
+      <button className="logoutbutton">Logut</button>
+      </div>
+    
     </>
-   
   );
 };
 

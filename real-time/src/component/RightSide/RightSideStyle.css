@@ -3,8 +3,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    color: #fff;
+    background-color: #202c33;
+    color:  #d1d7db;
     padding: 10px 20px;
     height: 65px;
   }
@@ -12,17 +12,26 @@
   .RN-2 {
     display: flex;
     align-items: center;
+    margin-left: 15px;
   }
   
   .RN-2 img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     margin-right: 10px;
+    border: 1px solid black;
   }
   
   .RN-3 {
     font-weight: bold;
+    margin-left: 20px;
+  }
+  
+  .RN-4 {
+    /* font-weight: bold;
+    margin-left: 20px; */
+    margin-right: 10px;
   }
   
   .RN-4 button {
@@ -55,7 +64,7 @@
 .RF-1 {
   display: flex;
   align-items: center;
-  background-color: #333;
+  background-color: #202c33;
   color: #fff;
   padding: 10px;
   height: 60px;
@@ -123,12 +132,12 @@ input {
   width: 94%; /* Set a fixed width for the div */
   height: 600px; /* Set a fixed height for the div */
   overflow: auto; /* Enable vertical and horizontal scrolling when content overflows */
-  border: 1px solid #ccc; /* Add a border for visual separation */
+  /* border: 1px solid #ccc; Add a border for visual separation */
   padding: 10px;
   margin-left: 2%; /* Add padding to the content area */
-  color: white;
+  /* color: white; */
  
-  
+  /* background-color: #111b217e; */
   
 
   word-wrap: break-word;
@@ -194,3 +203,16 @@ input {
 
 
 /* till here */
+
+
+.onlineShow{
+  width: 10px;
+  height: 10px;
+  background-color: green;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+.oflineShow{
+  margin-left: 10px;
+  /* background-color: ; */
+}

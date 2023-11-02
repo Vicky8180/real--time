@@ -4,10 +4,6 @@ const app=express();
 const port = 5000
 const dp=require("./dp");
 const http = require('http');
-
-
-
-
 const server = http.createServer(app);
 const cors = require('cors');
 
@@ -33,44 +29,84 @@ const Register = require('./router/RegisterRoute')
 const Login = require("./router/LoginRoute")
 const Search = require("./router/SearchRoute")
 const AddFriends = require("./router/Addfriends")
+const Message = require("./router/Message")
 const Auth = require("./Authentication/Auth")
-
+const chat = require("./router/Chat")
+const getmessages = require("./router/GetMessages")
+const getusers = require("./router/getUser")
 
 app.use('/api',Register)
 app.use('/api',Login)
 app.use('/api',Search)
 app.use('/api',AddFriends)
+app.use('/api',Message)
+app.use('/api',chat)
+app.use('/api',getmessages)
+app.use('/api',getusers)
 
 
-  
+let users=[];
+
+   const adduser=(userId,socketId)=>{
+   const existingUser = users.find((user) => user.userId === userId);
+   if (!existingUser) {
+    const newUser = { userId:userId, socketId:socketId };
+    users.push(newUser);
+   }
+   return users;
+
+    }
+    const removeUser=(socketId)=>{
+    users=users.filter((user)=>user.socketId!==socketId)
+    return users;
+    }
 
 
+    const getUser=(props)=>{
 
-const senderNamespace = io.of('/sender');
-const receiverNamespace = io.of('/receiver');
+      for(let i=0;i<users.length;i++){
+        if(users[i].userId===props){
+          return users[i].socketId
+        }
+      }
+    }
+     
 
-senderNamespace.on('connection', (socket) => {
-    console.log('A sender connected');
+ 
+io.on('connection', (socket) => {
+  console.log("user is connected");
 
-    socket.on('chat message', (message) => {
-        // Broadcast the message to the receiver namespace only
-        // socket.join(message._id)
-        // console.log(message)
-        receiverNamespace.emit('chat message', message);
-    });
+  io.emit('welcome', "hello from server");
 
-    socket.on('disconnect', () => {
-        console.log('A sender disconnected');
-    });
+  socket.on('welcome', (userId) => {
+    adduser(userId, socket.id);
+    io.emit('getusers', users); // Emit 'getusers' after a user joins
+  });
+
+  //send messages 
+
+  socket.on('sendmessage',(data)=>{
+    // console.log("1")
+// console.log(data)
+// console.log("2")
+    const userSocket=getUser(data.recieverId);
+    // console.log("3")
+    // console.log(users)
+    // console.log("4")
+    io.to(userSocket).emit('getmessage',{
+      data
+    })
+
+  })
+
+//// for disconnection
+  socket.on('disconnect', () => {
+    removeUser(socket.id);
+    io.emit('getusers', users); // Emit 'getusers' after a user disconnects
+  });
 });
 
-receiverNamespace.on('connection', (socket) => {
-    console.log('A receiver connected');
 
-    socket.on('disconnect', () => {
-        console.log('A receiver disconnected');
-    });
-});
 
 
 server.listen(3003, () => {

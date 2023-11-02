@@ -11,7 +11,7 @@ function UserDetailView(props) {
     <div className="user-dialog-overlay">
       <div className="user-dialog-content">
         <button className="close-button" onClick={OffIt} >
-          {/* &times; */}
+          &times;
         </button>
         <div className="user-info">
           <img className="user-photo" src="https://static.vecteezy.com/system/resources/thumbnails/019/900/322/small/happy-young-cute-illustration-face-profile-png.png" alt="dd" />

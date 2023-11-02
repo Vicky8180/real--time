@@ -14,18 +14,19 @@ router.post('/register',async(req,res)=>{
      console.log(userExists);
      if(userExists){
 
-        console.log("email matched");
+        // console.log("email matched");
 
         return res.json({data:"User Exists", success:false});
      }else {
 
         const password=req.body.password;
-        const name=req.body.name;
-        console.log(req.body.name )
+        let name=req.body.name;
+        // console.log(req.body.name )
+     name= name.charAt(0).toUpperCase() + name.slice(1)
     const newUser= {name,email,password};
   console.log(newUser )
         const data= await userModel.create(newUser);
-           console.log("love")
+          //  console.log("love")
       const love=  setCookies(data,res,"Register and Token is added");
 //   console.log(love)
      }

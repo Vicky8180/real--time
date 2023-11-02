@@ -11,6 +11,11 @@ const messageSchema = new mongoose.Schema({
     ref: 'users',
     required: true,
   },
+  receiver: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',
+    required: true,
+  },
   textContent: {
     type: String,
     required: true,
@@ -23,4 +28,4 @@ const messageSchema = new mongoose.Schema({
 
 const MessageModel = mongoose.model('message', messageSchema);
 
-module.exports = Message;
+module.exports = MessageModel;

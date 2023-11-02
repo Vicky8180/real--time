@@ -1,79 +1,115 @@
-import React, { useState ,useEffect} from 'react'
-import "./RightSideStyle.css"
-import {useDispatch, useSelector}  from "react-redux"
-import {AddtoChatArray} from "../../action/index"
-import io from 'socket.io-client';
 
-// import io from 'socket.io-client';
-// const receiverSocket = io('http://localhost:3003');
-// const senderSocket = io('http://localhost:3003'); 
 
-const senderSocket = io('http://localhost:3003/sender');
-const receiverSocket = io('http://localhost:3003/receiver');
-
+import React, { useState, useEffect } from "react";
+import "./RightSideStyle.css";
+import { useSelector, useDispatch } from "react-redux";
+import io from "socket.io-client";
+import axios from "axios";
+import { AddtoChatArray, OnlineUsers ,NotificationState} from "../../action";
+import InputEmoji from 'react-input-emoji'
 export default function RightFooter() {
-  const [userChat, setUserChat]= useState(""); 
-     const dispatch= useDispatch();
+  // const [socket, setSocket] = useState(null);
+  const [userChat, setUserChat] = useState("");
+  const dispatch= useDispatch();
+
+  const [getMssage, setGetMessage] = useState();
+  useSelector((state) => state.ScrollToBottom);
+  var admindata = JSON.parse(localStorage.getItem("admin"));
+  const ChatList = useSelector((state) => state.ChatList);
+
+  const socket = io("http://localhost:3003");
+  const recieverData = useSelector((state) => state.SelectedChat);
+     console.log(recieverData[0].user._id)
+  const sendChat = async () => {
+    await axios.post("http://localhost:3003/api/messages", {
+      chat: ChatList.data[0]._id,
+      sender: admindata._id,
+      textContent: userChat,
+      receiver:recieverData[0].user._id
+    });
+
+    socket.emit("sendmessage", {
+      senderId: admindata._id,
+      recieverId: recieverData[0].user._id,
+      text: userChat,
+    });
+      const objectToSend={   sender: admindata._id,
+        receiver:recieverData[0].user._id,
+        textContent: userChat,}
+    dispatch(AddtoChatArray(objectToSend) )
+    setUserChat("");
+  };
+
+  useEffect(() => {
+    if (socket) {
+      socket.on("welcome", (message) => {
+        socket.emit("welcome", admindata._id);
+      });
+      socket.on("getusers", (users) => {
+        console.log(users);
+        dispatch(OnlineUsers(users));
+      });
+      socket.on("getmessage", (data) => {
+ 
+        const object={sender:data.data.senderId,textContent:data.data.text, recieverData:recieverData}
+        setGetMessage(object);
+        console.log(data);
+      });
+    }
+  }, []);
+
     
-    
-   
-   
-     useSelector((state)=>state.ScrollToBottom);
-    
-  const sendChat=()=>{
-
-    const objectToSend={userChat:userChat,fromSender:false}
-    senderSocket.emit('chat message', objectToSend);
-         dispatch(AddtoChatArray(objectToSend));
-        
-         setUserChat("");
-         
-         
-
-         
- }
-
- useEffect(() => {
-   
-  receiverSocket.on('chat message', (message) => {
-    console.log(message);
-    const messageGot={userChat:message.userChat,fromSender:true}
-    dispatch(AddtoChatArray(messageGot));
-  
-  });   
-
-  // return () => {
-  //   receiverSocket.disconnect();
-  // };
-}, []);
+//incoming mesaages handling
+  useEffect(()=>{
+    if(getMssage!==undefined){
+      if(recieverData[0].user._id===getMssage.sender){
+  dispatch(AddtoChatArray(getMssage))
+}else {
+  // here notification logic c
+  console.log(getMssage)
+  dispatch(NotificationState(getMssage));
 
 
+}
+}
+  },[getMssage])
 
-
- const takeChat=(e)=>{
-  setUserChat(e.target.value)
- }
+  const takeChat = (e) => {
+    setUserChat(e.target.value);
+  };
 
   return (
     <>
+      <div className="RF-1">
+        <div className="emogi">
+        <InputEmoji
+          // value={text}
+          // onChange={setText}
+          cleanOnEnter
+          
+          placeholder="Type a message"
+        />
 
-    <div className='RF-1'>
-    <div className='emogi'>
-      <img src="" alt="dd"/>
-    </div>
-    <div className='input'>
-       <form className='inputform'>
-        <input  placeholder='Text' type='text'   value={userChat} onChange={takeChat} />
-       </form>
-    </div>
-    <div className='send'>
- <button className='sendButton' onClick={sendChat}>
-    Send
- </button>
-    </div>
-
-    </div>
-
+        </div>
+        <div className="input">
+          <form className="inputform">
+            <input
+              placeholder="Text"
+              type="text"
+              value={userChat}
+              onChange={takeChat}
+            />
+          </form>
+        </div>
+        <div className="send">
+          <button className="sendButton" onClick={sendChat}>
+            Send
+          </button>
+        </div>
+      </div>
+      <div>
+     
+      </div>
     </>
-  )
+  );
 }

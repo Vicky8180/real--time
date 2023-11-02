@@ -91,6 +91,7 @@
 import React, { useState } from 'react';
 import './UserStyle.css'; // Make sure to import your CSS file
 import axios from 'axios';
+import Login from "../User/Login"
 import { useNavigate } from 'react-router-dom';
 
 function RegistrationForm() {
@@ -124,7 +125,8 @@ function RegistrationForm() {
       });
 
       if (response.data.success) {
-        navigate('/firstpage');
+        console.log(response)
+        navigate('/login',Login);
       } else {
         alert('User already exists.');
       }

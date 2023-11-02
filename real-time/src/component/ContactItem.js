@@ -1,5 +1,5 @@
 import React from 'react';
-
+  import "../App.css"
 const ContactItem = (props) => {
   // console.log(props);
   return (

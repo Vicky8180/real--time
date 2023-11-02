@@ -1,8 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../App.css';
-
+import {useSelector, useDispatch} from "react-redux"
+import { Friends } from '../../action';
 
 async function fetchSearchResults(searchTerm) {
     try {
@@ -17,7 +17,7 @@ async function fetchSearchResults(searchTerm) {
     }
   }
 
-const  LiveSearch=(props)=> {
+function LiveSearch(props) {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
   
@@ -30,28 +30,33 @@ const  LiveSearch=(props)=> {
       updateSearchResults();
     }, [searchTerm]);
 
-
-    const OffIt=()=>{
-    
+    // const [admindata, setAdmindata]=useState(useSelector((state)=>state.Admin))
+    const OffIt = () => {
+      console.log('Closing LiveSearch modal');
       props.close();
-  }
-   
+    }
+    const dispatch=useDispatch();
+    
+     const admin=JSON.parse(localStorage.getItem("admin"));
   const addingFriend=async(props)=>{
       const userId= props;
-      console.log(props)
-     const adding = await axios.get(`http://localhost:3003/api/add?friendId=${userId}&myId=6537a030a6ab7b607ffa86f7`)
+      // console.log(props)
+      const myId= admin._id
+      await axios.get(`http://localhost:3003/api/add?friendId=${userId}&myId=${myId}`)
 
-     console.log(adding)
+     const friendList= await axios.get(`http://localhost:3003/api/getusers?userId=${admin._id}`)
+  dispatch(Friends(friendList.data.data[0].friends))
+     console.log(friendList.data.data[0].friends)
   }
 
 
   return (
     <div className="user-dialog-overlay">
       <div className="user-dialog-content">
-        {/* <button className="close-button" onClick={OffIt} >
+        <button className="close-button" onClick={OffIt} >
           &times;
-        </button> */}
-        <button onClick={props.close}>x</button>
+        </button>
+        {/* <button onClick={props.close}>x</button> */}
 
         <h3>Search Users</h3>
         <div className='SU-1'>
