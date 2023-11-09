@@ -4,7 +4,7 @@ import "../../App.css"
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 const ChatApp = (props) => {
   const tempdata=useSelector((state)=>state.NotificationState)
-  console.log(tempdata)
+
   const [notifications, setNotifications] = useState(tempdata);
 
   const addNotification = (message) => {

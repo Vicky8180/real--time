@@ -13,7 +13,7 @@ function RightNavbar() {
   const OnlineUsers=useSelector((state)=>state.OnlineUsers)
   const receiver= useSelector((state)=>state.SelectedChat);
   let onlineChecker=false;  
-  console.log(receiver)
+
   for(let i=0;i<OnlineUsers.length;i++){
      
     if(OnlineUsers[i].userId===receiver[0].user._id){
