@@ -9,7 +9,7 @@ const Friends=(state=initialState,action)=>{
 
         case "friends":{
 
-    console.log(action.payload)
+   
 
             return action.payload
         } 

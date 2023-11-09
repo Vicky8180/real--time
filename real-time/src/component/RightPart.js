@@ -9,7 +9,7 @@ export default function RightPart() {
   const chatdata=useSelector((state)=>state.ChatArray);
   const SelectedChat= useSelector((state)=>state.SelectedChat)
 
-  console.log(SelectedChat)
+  
   var t=false;
  if(chatdata.length===0){
    t=true;

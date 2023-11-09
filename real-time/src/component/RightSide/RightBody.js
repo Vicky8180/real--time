@@ -15,7 +15,7 @@ export default function RightBody() {
     }
   };
 
-  console.log(data2);
+ 
 
   dispatch(ScrollToBottomAction(scrollToBottom));
 

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 function Modal({ children }) {
   const modalRoot = document.getElementById('modal-root');
-  console.log(children)
+
   return ReactDOM.createPortal(
     <div className="modal-overlay">
    

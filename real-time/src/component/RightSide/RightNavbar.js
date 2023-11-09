@@ -13,6 +13,7 @@ function RightNavbar() {
   const OnlineUsers=useSelector((state)=>state.OnlineUsers)
   const receiver= useSelector((state)=>state.SelectedChat);
   let onlineChecker=false;  
+  console.log(receiver)
   for(let i=0;i<OnlineUsers.length;i++){
      
     if(OnlineUsers[i].userId===receiver[0].user._id){
@@ -46,8 +47,8 @@ function RightNavbar() {
         <div className="RN-4">
           <button onClick={openModal}>View</button>
           {showModal && (
-            <Modal>
-              <UserDetailView close={closeModal} />
+            <Modal >
+              <UserDetailView close={closeModal} state={receiver}/>
             </Modal>
           )}
         </div>

@@ -19,7 +19,7 @@ export default function RightFooter() {
 
   const socket = io("http://localhost:3003");
   const recieverData = useSelector((state) => state.SelectedChat);
-     console.log(recieverData[0].user._id)
+  
   const sendChat = async () => {
     await axios.post("http://localhost:3003/api/messages", {
       chat: ChatList.data[0]._id,
@@ -46,14 +46,14 @@ export default function RightFooter() {
         socket.emit("welcome", admindata._id);
       });
       socket.on("getusers", (users) => {
-        console.log(users);
+       
         dispatch(OnlineUsers(users));
       });
       socket.on("getmessage", (data) => {
  
         const object={sender:data.data.senderId,textContent:data.data.text, recieverData:recieverData}
         setGetMessage(object);
-        console.log(data);
+   
       });
     }
   }, []);
@@ -66,7 +66,7 @@ export default function RightFooter() {
   dispatch(AddtoChatArray(getMssage))
 }else {
   // here notification logic c
-  console.log(getMssage)
+
   dispatch(NotificationState(getMssage));
 
 

@@ -2,7 +2,7 @@ import React from 'react';
 import '../../App.css';
 
 function UserDetailView(props) {
- 
+//  console.log(props.state[0].user.name)
     const OffIt=()=>{
      
         props.close();
@@ -14,9 +14,9 @@ function UserDetailView(props) {
           &times;
         </button>
         <div className="user-info">
-          <img className="user-photo" src="https://static.vecteezy.com/system/resources/thumbnails/019/900/322/small/happy-young-cute-illustration-face-profile-png.png" alt="dd" />
-          <h2 className="user-name">John Smith</h2>
-          <p className="user-email">Email: Joshn99s@gamil.com</p>
+          <img className="user-photo" src={props.state[0].user.photo} alt="dd" />
+          <h2 className="user-name">{props.state[0].user.name}</h2>
+          <p className="user-email">{props.state[0].user.email}</p>
         </div>
       </div>
      

@@ -17,7 +17,7 @@ const LeftNavbar = () => {
   const friends1 = admin.friends;
   let friends;
   const friends2=useSelector((state)=>state.Friends)
-  console.log(friends2)
+
 
   if(friends2.length===0){
    friends=friends1;
@@ -47,11 +47,11 @@ const LeftNavbar = () => {
       users: [props._id, admin._id],
       messageAccesser: admin._id,
     });
-    console.log(props);
+
     const chats = await axios.get(
       `http://localhost:3003/api/getmessages?chatId=${response.data.data[0]._id}`
     );
-    console.log(chats.data.data);
+   
     dispatch(ChatList(response.data));
     dispatch(AddtoChatArray(chats.data.data));
     dispatch(SelectedChat({ user: props, checkerBool: true }));
@@ -62,7 +62,7 @@ const LeftNavbar = () => {
   useEffect(() => {}, [showModal2, friends]);
   const [notiCount,setNotiCount]=useState()
    const notificationCount=useSelector((state)=>state.NotificationState)
-   console.log(notificationCount)
+ 
   return (
     <>
       <div className="navbar">

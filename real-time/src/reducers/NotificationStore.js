@@ -36,9 +36,7 @@ const NotificationState = (state = initialState, action) => {
     case "notificationstate":
       if (action.payload !== 0) {
         // Increment the state by 1
-        console.log("hh")
-        console.log(action.payload)
-
+      
         return [...state,action.payload];
       } else {
         // Set the state to 0

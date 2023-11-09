@@ -12,7 +12,7 @@ async function fetchSearchResults(searchTerm) {
       }
       return [];
     } catch (error) {
-      console.error('Error during live search:', error);
+    
       return [];
     }
   }
@@ -24,7 +24,7 @@ function LiveSearch(props) {
     useEffect(() => {
       async function updateSearchResults() {
         const results = await fetchSearchResults(searchTerm);
-        console.log(results)
+   
         setSearchResults(results);
       }
       updateSearchResults();
@@ -46,7 +46,7 @@ function LiveSearch(props) {
 
      const friendList= await axios.get(`http://localhost:3003/api/getusers?userId=${admin._id}`)
   dispatch(Friends(friendList.data.data[0].friends))
-     console.log(friendList.data.data[0].friends)
+    
   }
 
 

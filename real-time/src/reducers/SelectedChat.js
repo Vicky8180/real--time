@@ -10,7 +10,7 @@ const SelectedChat=(state=initialState,action)=>{
     const temp=action.payload.user
 
     state[0]={user:temp,checkerBool:true}
-   console.log(state[0]);
+
         return state;
 
         } 

@@ -33,7 +33,7 @@ function LoginForm() {
     });
 
     if (userExists.data.success) {
-      console.log(userExists.data);
+   
       dispatch(Admin(userExists.data));
       localStorage.setItem("admin", JSON.stringify(userExists.data.data));
       navigate("/firstpage", FirstPage);

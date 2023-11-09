@@ -125,13 +125,13 @@ function RegistrationForm() {
       });
 
       if (response.data.success) {
-        console.log(response)
+    
         navigate('/login',Login);
       } else {
         alert('User already exists.');
       }
     } catch (error) {
-      console.error('Error during registration:', error);
+      
       alert('An error occurred during registration.');
     }
   };
