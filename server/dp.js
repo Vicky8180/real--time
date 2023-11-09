@@ -1,7 +1,16 @@
 const mongoose=require('mongoose')
+const dotenv = require("dotenv")
 
 
-var mongoURL="mongodb+srv://vyadav99x1:vyadav99x1@cluster0.kiwaqg8.mongodb.net/"
+
+//This is used to hide password and id in  database url . "npm i dotenv"
+dotenv.config();
+
+const MongoUser= process.env.DB_username;
+const MongoPass= process.env.DB_userpass;
+
+var mongoURL=`mongodb+srv://${MongoUser}:${MongoPass}@cluster0.kiwaqg8.mongodb.net/`
+
 
    mongoose.connect(mongoURL,{useNewUrlParser:true ,useUnifiedTopology: true,bufferCommands: false})
 var connection=mongoose.connection;

@@ -86,13 +86,9 @@ io.on('connection', (socket) => {
   //send messages 
 
   socket.on('sendmessage',(data)=>{
-    // console.log("1")
-// console.log(data)
-// console.log("2")
+  
     const userSocket=getUser(data.recieverId);
-    // console.log("3")
-    // console.log(users)
-    // console.log("4")
+ 
     io.to(userSocket).emit('getmessage',{
       data
     })
@@ -105,8 +101,6 @@ io.on('connection', (socket) => {
     io.emit('getusers', users); // Emit 'getusers' after a user disconnects
   });
 });
-
-
 
 
 server.listen(3003, () => {
