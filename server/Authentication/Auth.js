@@ -30,7 +30,7 @@ dotenv.config();
 
 const Auth = async (req, res, next) => {
   const token = req.cookie; 
-    console.log(token)
+    // console.log(token)
   if (!token) {
     return res.status(401).json({
       message: "Unauthorized - Session Time out",

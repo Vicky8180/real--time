@@ -11,8 +11,15 @@ export default function FirstPage() {
     <>
  <div className='FP-1'>
 
+
 <LeftPart/>
+
+
+
 <RightPart/>  
+
+
+
 
 </div>
 

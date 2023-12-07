@@ -87,7 +87,7 @@ const LeftNavbar = () => {
         </div>
      
         <div className="search">
-          <button onClick={openModal}>search </button>
+          <button onClick={openModal}>Find </button>
           {showModal2 && (
             <Modal>
               <LiveSearch close={closeModal} />

@@ -1,12 +1,13 @@
 const express = require("express")
 const socketIo = require('socket.io');
 const app=express();
-const port = 5000
 const dp=require("./dp");
 const http = require('http');
 const server = http.createServer(app);
 const cors = require('cors');
+const dotenv = require("dotenv");
 
+dotenv.config();
 app.use((req,res,next)=>{
     res.setHeader("Access-Control-Allow-Origin","http://localhost:3000");
     res.header("Access-Control-Allow-Headers",
@@ -74,7 +75,7 @@ let users=[];
 
  
 io.on('connection', (socket) => {
-  console.log("user is connected");
+  // console.log("user is connected");
 
   io.emit('welcome', "hello from server");
 
@@ -103,6 +104,6 @@ io.on('connection', (socket) => {
 });
 
 
-server.listen(3003, () => {
-  console.log('Socket.io server is running on http://localhost:3003');
+server.listen(process.env.PORT, () => {
+  // console.log('Socket.io server is running on http://localhost:3003');
 });

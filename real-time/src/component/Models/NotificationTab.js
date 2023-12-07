@@ -29,10 +29,9 @@ const ChatApp = (props) => {
 
       <div className="chat-app">
       {/* Render your chat interface here */}
-      <div className="chat-interface">
-        {/* Your chat interface components */}
-        {/* Example: <ChatWindow /> */}
-      </div>
+      {/* <div className="chat-interface">
+
+      </div> */}
 
       {/* You can add notifications like this: */}
       {/* <button onClick={() => addNotification('New message received!')}>Show Notification</button> */}

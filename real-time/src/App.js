@@ -10,7 +10,7 @@ function App() {
 
   return (
   <>
-  <div className='div1'>
+  {/* <div className='div1'> */}
     {/* <FirstPage/> */}
 
 
@@ -23,7 +23,7 @@ function App() {
     </BrowserRouter>
 
 
-  </div>
+  {/* </div> */}
 
   
   </>

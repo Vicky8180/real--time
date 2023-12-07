@@ -109,10 +109,10 @@ input {
 
 /* Media query for responsiveness */
 @media (max-width: 768px) {
-  .RF-1 {
+  /* .RF-1 {
     flex-direction: column;
     padding: 10px;
-  }
+  } */
 
   .input {
     margin: 10px 0;
@@ -216,3 +216,40 @@ input {
   margin-left: 10px;
   /* background-color: ; */
 }
+
+
+@media (max-width: 468px) {
+
+  .RB-1 {
+    width: 94%; /* Set a fixed width for the div */
+    height: 670px; /* Set a fixed height for the div */
+    overflow: auto; /* Enable vertical and horizontal scrolling when content overflows */
+    /* border: 1px solid #ccc; Add a border for visual separation */
+    padding: 10px;
+    margin-left: 2%; /* Add padding to the content area */
+    /* color: white; */
+   
+    /* background-color: #111b217e; */
+    
+  
+    word-wrap: break-word;
+
+  }
+
+  .RF-1 {
+    
+    display: flex;
+    padding: 10px;
+  }
+
+  .send{
+    margin-left: 10px;
+  }
+
+  
+    .RN-1 {
+      display: flex;
+      flex-direction: row;
+    }
+}
+
