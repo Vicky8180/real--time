@@ -45,7 +45,10 @@ app.use('/api',chat)
 app.use('/api',getmessages)
 app.use('/api',getusers)
 
+app.use('/',(req,res)=>{
+    res.json({status:"Success"})   
 
+})
 let users=[];
 
    const adduser=(userId,socketId)=>{
@@ -105,5 +108,5 @@ io.on('connection', (socket) => {
 
 
 server.listen(process.env.PORT, () => {
-  // console.log('Socket.io server is running on http://localhost:3003');
+  console.log(`Socket.io server is running on ${process.env.PORT}`);
 });
