@@ -37,7 +37,7 @@
       "localhost",
       ".localhost"
     ],
-    "proxy": "http://120.0.0.1:3003/"
+    "proxy": "http://120.0.0.1:5000/"
   },
   "eslintConfig": {
     "extends": [

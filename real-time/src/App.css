@@ -1,16 +1,11 @@
 
 
-/* misleneouse */
-
 
 .adminName{
   margin-right: 130px;
   font-weight: bold;
 }
 
-/* till here */
-
-/* for leftnabvar */
 .navbar {
   display: flex;
   align-items: center;
@@ -52,25 +47,17 @@
     width: 100%;
   }
 }
-/* till here */
-
-
-
-
-
-
-/* for contact */
 
 
 .contact-item {
   display: flex;
   align-items: center;
   padding: 10px;
-  /* border-bottom: 1px solid #ddd; */
+ 
 }
 
 .left-section {
-  flex: 0 0 auto; /* Don't grow or shrink */
+  flex: 0 0 auto; 
   margin-right: 10px;
   border-radius: 50%;
   border: 1px solid black;
@@ -83,7 +70,7 @@
 }
 
 .right-section {
-  flex: 1; /* Grow to take remaining space */
+  flex: 1;
 }
 
 .name {
@@ -104,7 +91,7 @@
   cursor: pointer;
 }
 
-/* Responsive styles for smaller screens (e.g., mobile) */
+
 @media (max-width: 768px) {
   .contact-item {
     flex-direction: column;
@@ -120,10 +107,7 @@
 }
 
 
-/* till here */
 
-
-/* UserDialog.css */
 .user-dialog-overlay {
   position: fixed;
   top: 0;
@@ -159,9 +143,7 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
-  /* margin-left: 10%;
-  margin-top: 100px;
-   */
+ 
   align-items: center;
   justify-content: center;
 }
@@ -212,8 +194,6 @@
 
 .notification-1{
 
-  /* height: 100px; */
-  /* display: flex; */
   width: 96%;
   margin-top: 10px;
  
@@ -229,14 +209,14 @@
 .notification-text{
   
   width: 85%;
-  margin-right: 10px; /* Set the width to one-third to evenly distribute the space */
-  border: 1px solid #000; /* Add a border for visualization */
+  margin-right: 10px; 
+  border: 1px solid #000; 
   box-sizing: border-box; 
 }
 
 .noti-button{
-  width: 15%; /* Set the width to one-third to evenly distribute the space */
-  border: 1px solid #000; /* Add a border for visualization */
+  width: 15%; 
+  border: 1px solid #000; 
   box-sizing: border-box; 
 
 }
@@ -269,7 +249,6 @@
   margin-top: 5px;
 }
 
-/* Media query for responsiveness */
 @media (max-width: 500px) {
   .user-dialog-content {
     width: 100%;
@@ -286,7 +265,7 @@
   }
 }
 
-/* till here  */
+
 
 
 
@@ -295,12 +274,12 @@
  
   width: 94%;
   background:rgb(42 68 89);
-  /* border: none; */
+
   font-size: 24px;
   height: 90px;
   cursor: pointer;
   color:#d1d7db;
-  /* margin: 11px; */
+
   margin-top: 11px;
   margin-left: 11px;
 }
@@ -316,9 +295,9 @@
   height: 25px;
   width: 25px;
   margin-left: 10px;
-  /* top: -19px; */
+
   right: -18px;
-  /* padding: 10px 5px; */
+
   border-radius: 100%;
   background-color: red;
   color: white;
@@ -327,8 +306,7 @@
 
 
 
-  /* mainPage-i */
-
+  
 
 .FP-1{
   display: flex;
@@ -401,10 +379,6 @@ margin-top: 10px;
 }
 
 
-/* till here  */
-
-
-/* searrch User */
 
 .SU-1{
   width: 95%;
@@ -437,8 +411,6 @@ margin-top: 10px;
   height: 40px;
 }
 
-/* TIll here */
-
 
 
 
@@ -460,7 +432,6 @@ margin-top: 10px;
 }
 
 
-/* CenteredText.module.css */
 
 .centered-text {
   display: flex;
@@ -491,15 +462,15 @@ margin-top: 10px;
 
 
 .contact-item:active {
-  background-color: #3a2e2e; /* Change to the desired color */
-  color: #fff; /* Change text color if needed */
-  /* Add any other styling you want to apply when the div is clicked */
+  background-color: #3a2e2e; 
+  color: #fff; 
+ 
 }
-/* CSS for changing color when the div gains focus */
+
 .contact-item:focus {
-  background-color: #534c4c; /* Change to the desired color */
-  color: #fff; /* Change text color if needed */
-  /* Add any other styling you want to apply when the div gains focus */
+  background-color: #534c4c; 
+  color: #fff; 
+
 }
 
 
@@ -507,7 +478,7 @@ margin-top: 10px;
 @media (max-width: 478px) {
 .FP-1{
   display: inline;
-  /* justify-content: space-between; */
+  
   width: 98%;
   margin-left: 1%;
   margin-top: 0%;
@@ -566,7 +537,7 @@ margin-top: 10px;
   border-radius: 8px;
   padding: 16px;
   width: 95%;
-  /* max-width: 800px; */
+  
   max-height: 600px;
   text-align: center;
   position: relative;
