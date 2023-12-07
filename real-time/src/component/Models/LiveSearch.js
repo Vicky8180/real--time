@@ -7,7 +7,7 @@ import { Friends } from '../../action';
 async function fetchSearchResults(searchTerm) {
     try {
       if (searchTerm.length >= 1) {
-        const response = await axios.get(`http://localhost:3003/api/search?keyWord=${searchTerm}`);
+        const response = await axios.get(`http://localhost:5000/api/search?keyWord=${searchTerm}`);
         return response.data;
       }
       return [];
@@ -42,9 +42,9 @@ function LiveSearch(props) {
       const userId= props;
       // console.log(props)
       const myId= admin._id
-      await axios.get(`http://localhost:3003/api/add?friendId=${userId}&myId=${myId}`)
+      await axios.get(`http://localhost:5000/api/add?friendId=${userId}&myId=${myId}`)
 
-     const friendList= await axios.get(`http://localhost:3003/api/getusers?userId=${admin._id}`)
+     const friendList= await axios.get(`http://localhost:5000/api/getusers?userId=${admin._id}`)
   dispatch(Friends(friendList.data.data[0].friends))
     
   }

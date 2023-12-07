@@ -27,7 +27,7 @@ function LoginForm() {
   };
 
   const loginButton = async () => {
-    const userExists = await axios.post("http://localhost:3003/api/login", {
+    const userExists = await axios.post("http://localhost:5000/api/login", {
       email: email,
       password: password,
     });

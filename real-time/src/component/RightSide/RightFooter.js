@@ -17,11 +17,11 @@ export default function RightFooter() {
   var admindata = JSON.parse(localStorage.getItem("admin"));
   const ChatList = useSelector((state) => state.ChatList);
 
-  const socket = io("http://localhost:3003");
+  const socket = io("http://localhost:5000");
   const recieverData = useSelector((state) => state.SelectedChat);
   
   const sendChat = async () => {
-    await axios.post("http://localhost:3003/api/messages", {
+    await axios.post("http://localhost:5000/api/messages", {
       chat: ChatList.data[0]._id,
       sender: admindata._id,
       textContent: userChat,

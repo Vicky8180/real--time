@@ -118,7 +118,7 @@ function RegistrationForm() {
 
   const registerButton = async () => {
     try {
-      const response = await axios.post('http://localhost:3003/api/register', {
+      const response = await axios.post('http://localhost:5000/api/register', {
         name: formData.username,
         email: formData.email,
         password: formData.password,

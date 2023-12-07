@@ -42,14 +42,14 @@ const LeftNavbar = () => {
   };
 
   const openParticularChat = async (props) => {
-    const response = await axios.post("http://localhost:3003/api/chatcreated", {
+    const response = await axios.post("http://localhost:5000/api/chatcreated", {
       chatName: admin.name,
       users: [props._id, admin._id],
       messageAccesser: admin._id,
     });
 
     const chats = await axios.get(
-      `http://localhost:3003/api/getmessages?chatId=${response.data.data[0]._id}`
+      `http://localhost:5000/api/getmessages?chatId=${response.data.data[0]._id}`
     );
    
     dispatch(ChatList(response.data));
