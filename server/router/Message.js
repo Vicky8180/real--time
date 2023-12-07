@@ -53,7 +53,7 @@ router.post('/messages', async (req, res) => {
         const chat = req.body.chat;
         const textContent = req.body.textContent;
         const receiver=req.body.receiver;
-        console.log(receiver)
+        // console.log(receiver)
 
         const data = await MessageModel.create({
             chat: chat,
@@ -75,7 +75,7 @@ router.post('/messages', async (req, res) => {
 
         return res.json(data2);
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 });
 

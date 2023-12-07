@@ -37,7 +37,7 @@ function ChatRoom({ username }) {
       <div className="ChatInput">
         <input
           type="text"
-          placeholder="Type your message..."
+          placeholder="Type message here "
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />

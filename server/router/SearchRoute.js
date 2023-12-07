@@ -8,14 +8,14 @@ router.get('/search',async(req,res)=>{
    try {
     
     const keyWord= req.query.keyWord;
-console.log(keyWord)
+// console.log(keyWord)
     const data = await UserModel.find({
         $or: [
           { name: { $regex: keyWord, $options: 'i' } },
           { email: { $regex: keyWord, $options: 'i' } }, 
         ],
       });
-    console.log(data);
+    // console.log(data);
     return res.json(data);
 
    } catch (error) {

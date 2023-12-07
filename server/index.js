@@ -80,7 +80,7 @@ io.on('connection', (socket) => {
 
   socket.on('welcome', (userId) => {
     adduser(userId, socket.id);
-    io.emit('getusers', users); // Emit 'getusers' after a user joins
+    io.emit('getusers', users); 
   });
 
   //send messages 
@@ -98,7 +98,7 @@ io.on('connection', (socket) => {
 //// for disconnection
   socket.on('disconnect', () => {
     removeUser(socket.id);
-    io.emit('getusers', users); // Emit 'getusers' after a user disconnects
+    io.emit('getusers', users); 
   });
 });
 

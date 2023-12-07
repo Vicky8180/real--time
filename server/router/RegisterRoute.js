@@ -9,9 +9,9 @@ router.post('/register',async(req,res)=>{
     try {
       
      const email= req.body.email;
-   console.log(email);
+  //  console.log(email);
      const userExists=  await userModel.findOne({email:email});
-     console.log(userExists);
+    //  console.log(userExists);
      if(userExists){
 
         // console.log("email matched");
@@ -24,7 +24,7 @@ router.post('/register',async(req,res)=>{
         // console.log(req.body.name )
      name= name.charAt(0).toUpperCase() + name.slice(1)
     const newUser= {name,email,password};
-  console.log(newUser )
+  // console.log(newUser )
         const data= await userModel.create(newUser);
           //  console.log("love")
       const love=  setCookies(data,res,"Register and Token is added");

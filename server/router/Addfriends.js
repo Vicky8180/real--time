@@ -15,11 +15,11 @@ router.get('/add',async(req,res)=>{
         
         const userExistsMyId= await userModel.find({_id:myId})
         const userExistsFriendId= await userModel.find({_id:friendId});
-      console.log("1 ")
-      console.log(userExistsFriendId[0])
+      // console.log("1 ")
+      // console.log(userExistsFriendId[0])
        
         if (userExistsMyId[0].friends.includes(friendId)) {
-            console.log("2 ")
+            // console.log("2 ")
 
                if(userExistsFriendId[0].friends.includes(myId)){
                 // console.log("3 ")
