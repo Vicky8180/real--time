@@ -6,18 +6,22 @@ const http = require('http');
 const server = http.createServer(app);
 const cors = require('cors');
 const dotenv = require("dotenv");
-
 dotenv.config();
-app.use((req,res,next)=>{
-    res.setHeader("Access-Control-Allow-Origin","http://localhost:3000");
-    res.header("Access-Control-Allow-Headers",
-    "Origin,X-Requested-With, Content-Type, Accept");
-    next();
-  })
+const path  = require('path');
+
+
+
+
+
+app.use(cors()); 
+
+const _dirname=path.dirname("")
+const buildpath = path.join(_dirname,"../real-time/build")
+app.use(express.static(buildpath))
 
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: `http://${process.env.PORT}:5000`,
     methods: ["GET", "POST"],
     allowedHeaders: ["my-custom-header"],
     credentials: true

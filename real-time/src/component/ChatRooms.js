@@ -9,7 +9,7 @@ function ChatRoom({ username }) {
 
       const sendTrigger=async()=>{
       
-        const data=   await axios.get("http://localhost:5000/api/messages");
+        const data=   await axios.get(`${process.env.REACT_APP_BASE_URL_PORT}/api/messages`);
      
 
 

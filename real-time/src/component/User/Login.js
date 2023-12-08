@@ -6,7 +6,8 @@ import FirstPage from "../FirstPage";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { Admin } from "../../action";
-
+// import dotenv from "dotenv";
+// dotenv.config();
 function LoginForm() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -27,7 +28,8 @@ function LoginForm() {
   };
 
   const loginButton = async () => {
-    const userExists = await axios.post("http://localhost:5000/api/login", {
+    console.log(`${process.env.REACT_APP_BASE_URL_PORT}`)
+    const userExists = await axios.post(`${process.env.REACT_APP_BASE_URL_PORT}/api/login`, {
       email: email,
       password: password,
     });

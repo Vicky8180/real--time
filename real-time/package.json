@@ -2,6 +2,7 @@
   "name": "real-time",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -13,6 +14,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.1",
+    "dotenv": "^16.3.1",
+    "path-browserify": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-input-emoji": "^5.6.5",
@@ -34,8 +37,7 @@
     "allowedHosts": [
       "localhost",
       ".localhost"
-    ],
-    "proxy": "http://120.0.0.1:5000/"
+    ]
   },
   "eslintConfig": {
     "extends": [
