@@ -6,8 +6,8 @@ import RightBody from "./RightSide/RightBody"
 import { useSelector } from 'react-redux';
 import RightDisplay from './RightDisplay'
 export default function RightPart() {
-  const chatdata=useSelector((state)=>state.ChatArray);
-  const SelectedChat= useSelector((state)=>state.SelectedChat)
+const chatdata=useSelector((state)=>state.ChatArray);
+const SelectedChat= useSelector((state)=>state.SelectedChat)
 
   
   var t=false;

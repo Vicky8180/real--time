@@ -39,7 +39,7 @@ const ChatApp = (props) => {
       {/* Display notifications */}
       <div className="notification-container">
         {notifications.map((message, index) => 
-          <Notification key={index} message={message.textContent} onClose={() => removeNotification(index)} />
+          <Notification key={index} message={message.textContent} sender ={ message.sender} onClose={() => removeNotification(index)} />
         )}
       </div>
       <button onClick={closeIt}>close</button>

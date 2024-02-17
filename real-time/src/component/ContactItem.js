@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
   import "../App.css"
 const ContactItem = (props) => {
-  // console.log(props);
+ 
   return (
     <div className="contact-item">
       <div className="left-section">

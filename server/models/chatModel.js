@@ -16,7 +16,6 @@ messageAccesser:{
     type:mongoose.Schema.Types.ObjectId,
     ref:"message",
 },
-
 timeStamps:Date
 
 

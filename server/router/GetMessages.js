@@ -8,7 +8,6 @@ router.get('/getmessages', async(req,res)=>{
 try {
    const chatId=req.query.chatId;
 
-
     const data= await messagaModel.find({chat:chatId});
 
     return res.status(200).json({data:data,

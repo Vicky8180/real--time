@@ -54,5 +54,14 @@ export const NotificationState=(data)=>{
     return {
         type:"notificationstate",
         payload:data,
+        
+    }
+}
+
+export const RemoveNotification=(data)=>{
+
+    return {
+        type:"removeNotification",
+        payload:data,
     }
 }

@@ -1,16 +1,19 @@
-
-
 import React, { useState, useEffect } from "react";
 import "./RightSideStyle.css";
 import { useSelector, useDispatch } from "react-redux";
 import io from "socket.io-client";
 import axios from "axios";
-import { AddtoChatArray, OnlineUsers ,NotificationState} from "../../action";
-import InputEmoji from 'react-input-emoji'
+import {
+  AddtoChatArray,
+  OnlineUsers,
+  NotificationState,
+  Friends,
+} from "../../action";
+import InputEmoji from "react-input-emoji";
 export default function RightFooter() {
   // const [socket, setSocket] = useState(null);
   const [userChat, setUserChat] = useState("");
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
 
   const [getMssage, setGetMessage] = useState();
   useSelector((state) => state.ScrollToBottom);
@@ -19,13 +22,15 @@ export default function RightFooter() {
 
   const socket = io(`${process.env.REACT_APP_BASE_URL_PORT}`);
   const recieverData = useSelector((state) => state.SelectedChat);
-  
+  const [friends1, setFriends1] = useState(admindata.friends);
+  console.log(admindata.friends);
+
   const sendChat = async () => {
     await axios.post(`${process.env.REACT_APP_BASE_URL_PORT}/api/messages`, {
       chat: ChatList.data[0]._id,
       sender: admindata._id,
       textContent: userChat,
-      receiver:recieverData[0].user._id
+      receiver: recieverData[0].user._id,
     });
 
     socket.emit("sendmessage", {
@@ -33,10 +38,12 @@ export default function RightFooter() {
       recieverId: recieverData[0].user._id,
       text: userChat,
     });
-      const objectToSend={   sender: admindata._id,
-        receiver:recieverData[0].user._id,
-        textContent: userChat,}
-    dispatch(AddtoChatArray(objectToSend) )
+    const objectToSend = {
+      sender: admindata._id,
+      receiver: recieverData[0].user._id,
+      textContent: userChat,
+    };
+    dispatch(AddtoChatArray(objectToSend));
     setUserChat("");
   };
 
@@ -46,34 +53,65 @@ export default function RightFooter() {
         socket.emit("welcome", admindata._id);
       });
       socket.on("getusers", (users) => {
-       
         dispatch(OnlineUsers(users));
       });
       socket.on("getmessage", (data) => {
- 
-        const object={sender:data.data.senderId,textContent:data.data.text, recieverData:recieverData}
+        const object = {
+          sender: data.data.senderId,
+          textContent: data.data.text,
+          recieverData: recieverData,
+        };
+        // console.log(object)
         setGetMessage(object);
-   
       });
     }
   }, []);
 
-    
-//incoming mesaages handling
-  useEffect(()=>{
-    if(getMssage!==undefined){
-      if(recieverData[0].user._id===getMssage.sender){
-  dispatch(AddtoChatArray(getMssage))
-}else {
-  // here notification logic c
+  const latestAdder = async () => {
+    const updatedFriends = friends1.map((friend) => {
+      if (friend._id === getMssage.sender) {
+        return {
+          ...friend,
+          latestMessage: getMssage.textContent,
+        };
+      }
+      return friend;
+    });
 
-  dispatch(NotificationState(getMssage));
+    return updatedFriends;
+  };
 
-
-}
-}
-  },[getMssage])
-
+  //incoming mesaages handling
+  console.log(getMssage);
+  useEffect(() => {
+    if (getMssage !== undefined) {
+      if (recieverData[0].user._id === getMssage.sender) {
+        dispatch(AddtoChatArray(getMssage));
+        const polo = async () => {
+          const datacoming = await latestAdder();
+          dispatch(
+            Friends(datacoming, () => {
+              console.log(friends1); // This will log the updated state
+            })
+          );
+        };
+        polo();
+      } else {
+        dispatch(NotificationState(getMssage));
+        const polo = async () => {
+          const datacoming = await latestAdder();
+          dispatch(
+            Friends(datacoming, () => {
+              console.log(friends1); // This will log the updated state
+            })
+          );
+        };
+        polo();
+      }
+    } else {
+      // console.log("anoop3")
+    }
+  }, [getMssage]);
   const takeChat = (e) => {
     setUserChat(e.target.value);
   };
@@ -81,7 +119,7 @@ export default function RightFooter() {
   return (
     <>
       <div className="RF-1">
-        <div className="emogi">
+        {/* <div className="emogi">
         <InputEmoji
           // value={text}
           // onChange={setText}
@@ -90,7 +128,7 @@ export default function RightFooter() {
           placeholder="Type a message"
         />
 
-        </div>
+        </div> */}
         <div className="input">
           <form className="inputform">
             <input
@@ -107,9 +145,7 @@ export default function RightFooter() {
           </button>
         </div>
       </div>
-      <div>
-     
-      </div>
+      <div></div>
     </>
   );
 }

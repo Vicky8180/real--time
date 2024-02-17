@@ -18,12 +18,40 @@ const LeftNavbar = () => {
   let friends;
   const friends2=useSelector((state)=>state.Friends)
 
+  console.log(friends2)
+//   const getLatestMessage= async()=>{
 
+//   for(let i=0;i<friends1.length;i++){
+         
+//     const f_ID=friends1[i];
+//     const Admin_ID=admin._id;
+//     const messageTop= await axios.post(`${process.env.REACT_APP_BASE_URL_PORT}/api/getlatestmessage`,{
+//       users:[f_ID,Admin_ID]
+//     });
+//     friends1[i].latestMessage = messageTop.data.data
+
+//   }
+ 
+//    console.log(friends1)
+// }
+if(friends2.length===0){
+  friends=friends1;
+ }else {
+   friends=friends2;
+ }
+
+const updateder=()=>{
   if(friends2.length===0){
-   friends=friends1;
-  }else {
-    friends=friends2;
-  }
+    friends=friends1;
+   }else {
+     friends=friends2;
+   }
+}
+
+useEffect(()=>{
+  updateder();
+},[friends2])
+  
   const dispatch = useDispatch();
   const [showModal2, setShowModal2] = useState(false);
   const [showModal3, setShowModal3] = useState(false);
@@ -106,7 +134,7 @@ const LeftNavbar = () => {
           <ContactItem
             key={index}
             contactName={value.name}
-            discription={value.password}
+            discription={value.latestMessage}
           />
         </button>
       ))}

@@ -33,6 +33,24 @@ function LoginForm() {
       email: email,
       password: password,
     });
+    console.log(userExists.data.data.friends)
+    // const getLatestMessage= async()=>{
+
+      for(let i=0;i<userExists.data.data.friends.length;i++){
+         
+        const f_ID=userExists.data.data.friends[i];
+        const Admin_ID=userExists.data.data._id;
+        const messageTop= await axios.post(`${process.env.REACT_APP_BASE_URL_PORT}/api/getlatestmessage`,{
+          users:[f_ID,Admin_ID]
+        });
+        userExists.data.data.friends[i].latestMessage = messageTop.data.data
+    
+      }
+     
+      //  console.log(userExists)
+    // }
+    
+   
 
     if (userExists.data.success) {
    

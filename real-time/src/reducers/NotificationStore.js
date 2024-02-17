@@ -42,6 +42,9 @@ const NotificationState = (state = initialState, action) => {
         // Set the state to 0
         return 0;
       } 
+      case "removeNotification":{
+        return [];
+      }
     default:
       return state;
   }
