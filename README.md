@@ -3,7 +3,7 @@
 ## Overview
 Welcome to our Real-Time Chat Application! This web application provides users with the ability to create accounts, chat with each other in real-time, search for other users, and create group chats. Our priority is user security, ensuring that communications are private and secure without interference from unauthorized users. The application is designed to be responsive, providing an optimal experience across various devices.
 
-## [Live Link](http://54.92.34.46:5000/)
+## [Live Link](https://real-time-chat-five-blush.vercel.app/)
 
 ## Demo Shorts 
 
